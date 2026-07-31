@@ -34,7 +34,12 @@
    - 提交信息格式：`<类型>: <中文摘要>`，例如 `docs: 补全 INDEX.md`、`fix: 修正过期的 5 态规则`
    - 常用类型：`docs:`（文档）、`skill:`（技能规则）、`fix:`（修正）、`chore:`（杂项）
 3. **冲突处理**：推送被拒时先 `git pull --rebase` 再推；无法自动解决时停下询问用户，不覆盖任何人的修改。
-4. **分支策略**：默认直接推 main；若仓库开启了分支保护，则新建 `feature/<说明>` 分支并提交 PR，由用户合并。
+4. **分支策略（PR 流程约定）**：main 是唯一主线，所有改动一律走 PR，不直接推 main：
+   - `git checkout -b feature/<说明>` 新建分支
+   - 提交并推送：`git push -u origin feature/<说明>`
+   - 用 `gh pr create --fill` 发起 PR，等待用户审阅后合并（用户可在网页点击 Merge）
+   - 禁止对 main 执行直接推送、force push 或删除操作
+   - main 已在 GitHub 启用分支保护：禁止直接推送、禁止强制推送、禁止删除分支，GitHub 会强制执行此流程
 5. **凭据安全**：token/密钥绝不写入仓库文件或 AGENTS.md；GitHub 认证统一用 `gh auth login`（一次登录，全机器共享），或系统凭据管理器。
 6. **提交后**：向用户简要汇报提交号与变更内容。
 
