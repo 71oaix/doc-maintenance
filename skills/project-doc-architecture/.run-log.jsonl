@@ -1,0 +1,2 @@
+{"ts":"2026-06-29T16:00:00Z","task":"重构 project-doc-architecture：从13节一锅端拆为路由+references+gotchas","success":true,"findings":["原结构为13节全在一个SKILL.md中","拆为SKILL.md（路由）+ 4个references + gotchas + .run-log","旧description描述模糊，改为触发条件式+反例"]}
+{"ts":"2026-07-03T15:55:00","task":"docs/ 结构重组","success":true,"findings":["创建 architecture/、guide/、reference/ 目录","移动 5 文件：08/09 → architecture/，pitfalls/issues → guide/，design-v3 → _archive/","删除 docs/issues/、docs/pitfalls/","删除 .agents/skills/frontend-design/ 重复","更新 INDEX.md 路径","更新 6 文档的 frontmatter 路径引用"]}

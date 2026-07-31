@@ -7,7 +7,9 @@
 ## 目录约定
 
 - `docs/` — 设计文档；必须维护 `docs/INDEX.md`，文档按主题放入 `architecture/`、`specification/`、`guide/`、`research/`、`reference/`
-- Skill 代码在 `~/.pi/agent/skills/`（docs-scan、doc-contract、project-doc-architecture）
+- `skills/` — 三个技能的源码（唯一权威）：docs-scan、doc-contract、project-doc-architecture
+- `scripts/` — 辅助脚本（如技能同步）
+- 技能实际运行位置：`~/.pi/agent/skills/`（部署副本，由 `scripts/sync-skills.ps1` 同步）
 - 本项目的 AGENTS.md 不包含业务代码约束（纯文档管理项目）
 
 ## 文档规则
@@ -42,6 +44,12 @@
    - main 已在 GitHub 启用分支保护：禁止直接推送、禁止强制推送、禁止删除分支，GitHub 会强制执行此流程
 5. **凭据安全**：token/密钥绝不写入仓库文件或 AGENTS.md；GitHub 认证统一用 `gh auth login`（一次登录，全机器共享），或系统凭据管理器。
 6. **提交后**：向用户简要汇报提交号与变更内容。
+
+## 技能同步规则
+
+- 修改技能只改仓库 `skills/` 下对应目录，走 PR 合并到 main
+- 合并到 main 后运行 `scripts/sync-skills.ps1`，把最新版复制到 `~/.pi/agent/skills/`
+- 不要直接修改 `~/.pi/agent/skills/` 的部署副本；临时热修也要回写 `skills/` 并记录，避免源码与部署分叉
 
 ## 自迭代
 
